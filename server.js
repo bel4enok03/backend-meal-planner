@@ -10,7 +10,13 @@ mongoose.set('strictQuery', false);
 const PORT = 4000 || process.env.port
 
 app.use(express.json());
-app.use(cors())
+app.use(
+	cors({
+		origin: 'https://regal-starlight-6bb12d.netlify.app',
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+		credentials: true,
+	})
+);
 
 mongoose
 .connect(process.env.MONGODB_LINK)
